@@ -1,0 +1,30 @@
+﻿<UserControl
+	x:Class="ExplolerClassificatorWPFdsadsaDdisplaydsadsadadhio12o4h21Detail"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:customize="clr-namespace:asiufb81giflsiabfvioabfsilbaf"
+	mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+			<!--<customize:Splitter x:Name="NameFile"  Text="Name"			 Width="{Binding NameFile}"					  Thickness="1 1" BorderBrush="Gray"/>
+			<customize:Splitter x:Name="DateModd"  Text="Date moddified" Width="{Binding DateModd, FallbackValue=140}" Thickness="1 1" BorderBrush="Gray"/>
+			<customize:Splitter x:Name="SizeFile"  Text="Size"			 Width="{Binding SizeFile}"					  Thickness="1 1" BorderBrush="Gray"/>-->
+			<!--<customize:Splitter x:Name="ClassFile" Text="Class"			 Width="{Binding ClassFile}"					  Thickness="1 1" BorderBrush="Gray"/>-->
+		</StackPanel>
+		<ListBox x:Name="Explol" Style="{DynamicResource StoryListDirectory}" Background="#FF202020">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Image Source="{Binding Image}"/>
+						<TextBlock Width="{Binding ActualWidth, ElementName=NameFile}"	Text="{Binding Name}"/>
+						<TextBlock Width="{Binding ActualWidth, ElementName=DateModd}"	Text="{Binding CreationTime}"/>
+						<TextBlock Width="{Binding ActualWidth, ElementName=SizeFile}"	Text="{Binding Length}"/>
+						<TextBlock Width="{Binding ActualWidth, ElementName=ClassFile}" Text="{Binding Class}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</DockPanel>
+</UserControl>

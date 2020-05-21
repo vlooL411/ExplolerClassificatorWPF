@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ExplolerClassificatorWPF.InfoFile">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEAAIAAQAAAAARAAABAARQAEQARAAAAAAA=</HashCode>
+      <FileName>System\InfoFIle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.Images">
+    <Position X="19.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAgBAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\WorkFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.WorkFile">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAIAAAAAAAAAAAAAAAAAAAABAEAAECAAI=</HashCode>
+      <FileName>System\WorkFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.DelegateCommand" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DelegateCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.Locator">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Locator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.NavigationService&lt;T&gt;">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAIAAA=</HashCode>
+      <FileName>NavigationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.NotifyChanged">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NotifyChanged.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.Properties.Resources">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEGAREABAAQABAIAABEFCEAQGAAECACFkACAAIAoA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.Display.StatusBar" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="ExplolerClassificatorWPF.Display.StatusBar.StatusElem" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Display\StatusBar.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAYAAACAAAAAAABEAAAABAAAAAAAAAAAAAAAAAAiAAA=</HashCode>
+      <FileName>Display\StatusBar.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.Display.TreeFolderItem" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Display\TreeFolderItem.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.Display.Classif">
+    <Position X="7.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\Classification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.Display.Classification">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABIAAAAAMAAAAAAAAAAEQAABAAAAAAAA=</HashCode>
+      <FileName>System\Classification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.MLModel.Yolo.YoloParser.YoloOutputParser">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QUAAoAgAIgAAIBggAYABAAEAAAABABAAAAAGgAAAAAA=</HashCode>
+      <FileName>MLModel\YoloParser\YoloOutputParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.MLModel.MLProgrammSelectLanguage">
+    <Position X="14.75" Y="0.5" Width="2.25" />
+    <NestedTypes>
+      <Class Name="ExplolerClassificatorWPF.MLModel.MLProgrammSelectLanguage.ModelInput" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MLModel\MLProgrammSelectLanguage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="ExplolerClassificatorWPF.MLModel.MLProgrammSelectLanguage.ModelOutput" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MLModel\MLProgrammSelectLanguage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACABAAAAAAAAQAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MLModel\MLProgrammSelectLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.MLModel.YoloML">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="ExplolerClassificatorWPF.MLModel.YoloML.ImageData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MLModel\YoloML.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="ExplolerClassificatorWPF.MLModel.YoloML.ImagePrediction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MLModel\YoloML.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAQAAABAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>MLModel\YoloML.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.ViewModels.ExplolerVM">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQgAAIABCABIIBAAAAAAAAgCAAIgACgCAAAKgAAA=</HashCode>
+      <FileName>ViewModels\ExplolerVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.ViewModels.MainVM">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ViewModels\MainVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplolerClassificatorWPF.ViewModels.VMLocator">
+    <Position X="6" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACABABAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>ViewModels\VMLocator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ExplolerClassificatorWPF.TypeInfo">
+    <Position X="11.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAABAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\InfoFIle.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ExplolerClassificatorWPF.ElemExplolerState">
+    <Position X="13" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>System\InfoFIle.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ExplolerClassificatorWPF.ViewModels.ExplolerMode">
+    <Position X="11.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ViewModels\ExplolerVM.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

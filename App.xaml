@@ -1,0 +1,55 @@
+﻿<Application x:Class="ExplolerClassificatorWPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+			 xmlns:viewmodels="clr-namespace:ExplolerClassificatorWPF.ViewModels"
+			 xmlns:local="clr-namespace:ExplolerClassificatorWPF"
+			 StartupUri="MainWindow.xaml">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary>
+					<viewmodels:VMLocator x:Key="VMLocator"/>
+				</ResourceDictionary>
+				<ResourceDictionary>
+					<SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+					<SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+					<SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+					<Style x:Key="Placeholder" TargetType="TextBox">
+						<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+						<Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+						<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+						<Setter Property="BorderThickness" Value="1"/>
+						<Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+						<Setter Property="HorizontalContentAlignment" Value="Left"/>
+						<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+						<Setter Property="AllowDrop" Value="true"/>
+						<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+						<Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="TextBox">
+									<Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
+										<Grid>
+											<ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+											<TextBlock x:Name="place" VerticalAlignment="Center" Background="Transparent" Padding="0" Margin="0"
+										   FontSize="{TemplateBinding FontSize}" TextAlignment="{TemplateBinding TextAlignment}" Text="{TemplateBinding Tag}"
+										   Foreground="Gray" Visibility="Collapsed" IsHitTestVisible="False"/>
+										</Grid>
+									</Border>
+									<ControlTemplate.Triggers>
+										<MultiTrigger>
+											<MultiTrigger.Conditions>
+												<Condition Property="Text" Value=""/>
+											</MultiTrigger.Conditions>
+											<Setter TargetName="place" Property="Visibility" Value="Visible"/>
+										</MultiTrigger>
+									</ControlTemplate.Triggers>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

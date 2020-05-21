@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ExplolerClassificatorWPF.Test\**" />
+    <EmbeddedResource Remove="ExplolerClassificatorWPF.Test\**" />
+    <None Remove="ExplolerClassificatorWPF.Test\**" />
+    <Page Remove="ExplolerClassificatorWPF.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\arrows %281%29.png" />
+    <None Remove="Resources\bar.png" />
+    <None Remove="Resources\chocolate.png" />
+    <None Remove="Resources\halloween.png" />
+    <None Remove="Resources\icons8-php-96.png" />
+    <None Remove="Resources\icons8-python-96.png" />
+    <None Remove="Resources\loading.png" />
+    <None Remove="Resources\tinyyolo2_model.zip" />
+    <None Remove="Resources\tools-and-utensils.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.4" />
+    <PackageReference Include="Microsoft.ML" Version="1.4.0" />
+    <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="1.4.0" />
+    <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="1.4.0" />
+    <PackageReference Include="Microsoft.ML.TensorFlow" Version="1.4.0" />
+    <PackageReference Include="Microsoft.ML.TensorFlow.Redist" Version="0.14.0" />
+    <PackageReference Include="Microsoft.ML.Vision" Version="1.4.0" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\arrows (1).png" />
+    <Resource Include="Resources\bar.png" />
+    <Resource Include="Resources\chocolate.png" />
+    <Resource Include="Resources\halloween.png" />
+    <Resource Include="Resources\icons8-php-96.png" />
+    <Resource Include="Resources\icons8-python-96.png" />
+    <Resource Include="Resources\loading.png" />
+    <Resource Include="Resources\tinyyolo2_model.zip" />
+    <Resource Include="Resources\tools-and-utensils.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Display\Block.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Display\Block.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,119 @@
+﻿<Page x:Class="ExplolerClassificatorWPF.Exploler" 
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:Display="clr-namespace:ExplolerClassificatorWPF.Display" 
+	  xmlns:local="clr-namespace:ExplolerClassificatorWPF" 
+	  xmlns:vm="clr-namespace:ExplolerClassificatorWPF.ViewModels" 
+	  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+	  mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800" Background="#FF191919"
+	  DataContext="{Binding ExplolerVM, Source={StaticResource VMLocator}}">
+	<!--ресурсы страницы-->
+	<Page.Resources>
+		<local:InfoFile x:Key="This_PC" Name="This PC" FullName="{x:Static vm:ExplolerVM.DefaultPath}"/>
+		<local:InfoFile x:Key="Desktop" Name="Рабочий стол" FullName="{x:Static local:Directories.Desktop}"/>
+		<local:InfoFile x:Key="Documents" Name="Документы" FullName="{x:Static local:Directories.Documents}"/>
+		<local:InfoFile x:Key="Downloads" Name="Загрузки" FullName="{x:Static local:Directories.Downloads}"/>
+		<local:InfoFile x:Key="Music" Name="Музыка" FullName="{x:Static local:Directories.Music}"/>
+		<local:InfoFile x:Key="Pictures" Name="Изображения" FullName="{x:Static local:Directories.Pictures}"/>
+		<local:InfoFile x:Key="Videos" Name="Видео" FullName="{x:Static local:Directories.Videos}"/>
+		<local:InfoFile x:Key="Тесты" Name="Тесты" FullName="E:\Test"/>
+		<local:InfoFile x:Key="Примеры" Name="Примеры" FullName="E:\For example"/>
+		<local:InfoFile x:Key="Корзина" Name="Корзина" FullName="C:\$Recycle.Bin"/>
+	</Page.Resources>
+	<Page.InputBindings>
+		<!--Устанока клавиши F5 на команду перезагрузки-->
+		<KeyBinding Key="F5" Command="{Binding Refresh}"/>
+		<!--Устанока клавиши BackSpace на команду возврата назад-->
+		<KeyBinding Key="Backspace" Command="{Binding Left}"/>
+		<!--Устанока клавиши Ctrl+BackSpace на команду возврата вперёд-->
+		<KeyBinding Gesture="Ctrl+Backspace" Command="{Binding Right}"/>
+	</Page.InputBindings>
+	<Grid>
+		<DockPanel>
+			<DockPanel LastChildFill="False" Height="22" DockPanel.Dock="Top" Background="#FF212020">
+				<!--Кнопка возврата назад-->
+				<Button Command="{Binding Left}" Background="{x:Null}" BorderBrush="{x:Null}">
+					<Button.Content>
+						<Image Source="/Resources/arrows (1).png"/>
+					</Button.Content>
+				</Button>
+				<!--Кнопка возврата вперёд-->
+				<Button Command="{Binding Right}" Background="{x:Null}" BorderBrush="{x:Null}" DockPanel.Dock="Left">
+					<Button.Content>
+						<Image Source="/Resources/arrows (1).png" RenderTransformOrigin="0.5,0.5">
+							<Image.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform ScaleX="-1"/>
+								</TransformGroup>
+							</Image.RenderTransform>
+						</Image>
+					</Button.Content>
+				</Button>
+				<!--Кнопка перезагрузки-->
+				<Button Command="{Binding Refresh}" Background="{x:Null}" BorderBrush="{x:Null}" DockPanel.Dock="Right">
+					<Button.Content>
+						<Image Source="/Resources/loading.png"/>
+					</Button.Content>
+				</Button>
+			</DockPanel>
+			<!--Древовидное отоброжение файлов и директорий-->
+			<TreeView MaxWidth="300" Background="{x:Null}" BorderBrush="{x:Null}">
+				<!--контроллеры с логикой заполнения ветвей-->
+				<Display:TreeFolderItem DataContext="{StaticResource This_PC}"/>
+				<Display:TreeFolderItem DataContext="{StaticResource Desktop}"/>
+				<Display:TreeFolderItem DataContext="{StaticResource Documents}"/>
+				<Display:TreeFolderItem DataContext="{StaticResource Downloads}"/>
+				<Display:TreeFolderItem DataContext="{StaticResource Music}"/>
+				<Display:TreeFolderItem DataContext="{StaticResource Pictures}"/>
+				<Display:TreeFolderItem DataContext="{StaticResource Videos}"/>
+				<Display:TreeFolderItem DataContext="{StaticResource Тесты}"/>
+				<Display:TreeFolderItem DataContext="{StaticResource Примеры}"/>
+				<Display:TreeFolderItem DataContext="{StaticResource Корзина}"/>
+				<!--триггер выбора ветки дерева с командой на изменение пути (Path) в модели (ExplolerVM)-->
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="SelectedItemChanged">
+						<i:InvokeCommandAction Command="{Binding ExplolerVM.ChangePath, Source={StaticResource VMLocator}}" 
+												   CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource FindAncestor, AncestorType=TreeView}}"/>
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+			</TreeView>
+			<Grid MaxHeight="20" DockPanel.Dock="Top" Background="#FF0F0D0D">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="140"/>
+				</Grid.ColumnDefinitions>
+				<!--текущая директория-->
+				<TextBox Text="{Binding Path}" Padding="10 0" CaretBrush="White"
+						 Background="Transparent" Foreground="White" BorderBrush="Transparent">
+					<TextBox.InputBindings>
+						<!--клавиша Enter - потверждениt введённого пути-->
+						<KeyBinding Gesture="Enter" Command="{Binding ChangePath}" 
+									CommandParameter="{Binding Text, RelativeSource={RelativeSource FindAncestor, AncestorType=TextBox}}"/>
+					</TextBox.InputBindings>
+				</TextBox>
+				<StackPanel Grid.Column="1" Width="140" Orientation="Horizontal">
+					<!--поле поиска по файлам и директориям-->
+					<TextBox Text="{Binding SearchPattern}" CaretBrush="White" Width="120" Tag="Search..." 
+							 Background="Transparent" Foreground="White" BorderThickness="0"
+							 Style="{DynamicResource Placeholder}">
+						<TextBox.InputBindings>
+							<KeyBinding Gesture="Enter" Command="{Binding Search}"
+										CommandParameter="{Binding Text, RelativeSource={RelativeSource FindAncestor, AncestorType=TextBox}}"/>
+						</TextBox.InputBindings>
+						<TextBox.TextDecorations>
+							<TextDecoration/>
+						</TextBox.TextDecorations>
+					</TextBox>
+					<!--кнопка поиска-->
+					<Button Command="{Binding Search}" BorderThickness="0" Background="Transparent">
+						<Image Source="/Resources/halloween.png" DockPanel.Dock="Right" Stretch="Fill" HorizontalAlignment="Right"/>
+					</Button>
+				</StackPanel>
+			</Grid>
+			<!--блочное отображение файлов, передаётся набор текущих файлов и директорий-->
+			<Display:Block DataContext="{Binding CurrentPath, IsAsync=True}"/>
+		</DockPanel>
+	</Grid>
+</Page>
