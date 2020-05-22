@@ -32,10 +32,10 @@
 		</Style>
 	</UserControl.Style>
 	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-		<Image Source="{Binding Image, IsAsync=True}" Width="70" Height="80"/>
+		<Image Source="{Binding Image, UpdateSourceTrigger=PropertyChanged, IsAsync=True}" Width="70" Height="80"/>
 		<TextBlock Text="{Binding Converter={StaticResource NameFile}, ConverterParameter=25}"
 				   FontSize="17" Foreground="Aqua" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		<ItemsControl ItemsSource="{Binding Classes, IsAsync=True}" Margin="3 4">
+		<ItemsControl ItemsSource="{Binding Classes, UpdateSourceTrigger=PropertyChanged}" Margin="3 4">
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
 					<Border Background="{Binding BoxColor, Converter={StaticResource ColorToSolidColorBrush}}" MinHeight="15" MinWidth="18" CornerRadius="10">

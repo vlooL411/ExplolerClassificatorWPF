@@ -113,7 +113,7 @@
 				</StackPanel>
 			</Grid>
 			<!--блочное отображение файлов, передаётся набор текущих файлов и директорий-->
-			<Display:Block DataContext="{Binding CurrentPath, IsAsync=True}"/>
+			<Display:Block DataContext="{Binding CurrentPath}"/>
 		</DockPanel>
 	</Grid>
 </Page>

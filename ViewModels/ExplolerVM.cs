@@ -1,6 +1,7 @@
 ﻿using ExplolerClassificatorWPF.Display;
 using ExplolerClassificatorWPF.Display.Converter;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -35,14 +36,14 @@ namespace ExplolerClassificatorWPF.ViewModels
             }
         }
         //список файлового описания для поиска
-        IEnumerable<InfoFile> _SearchPath;
+        ObservableCollection<InfoFile> _SearchPath;
         //текущий набор файлов и директорий
         int StatusBarLastElemCP = 0;
-        public IEnumerable<InfoFile> CurrentPath
+        public ObservableCollection<InfoFile> CurrentPath
         {
             get
             {
-                IEnumerable<InfoFile> current = null;
+                ObservableCollection<InfoFile> current = null;
                 var status = "";
                 if (ExplolerMode == ExplolerMode.Display)
                 {
@@ -65,7 +66,7 @@ namespace ExplolerClassificatorWPF.ViewModels
         //история переходов
         public List<string> HistrotyPaths { get; } = new List<string>();
         //словарь директорий
-        public static Dictionary<string, IEnumerable<InfoFile>> PathFiles { get; } = new Dictionary<string, IEnumerable<InfoFile>>();
+        public static Dictionary<string, ObservableCollection<InfoFile>> PathFiles { get; } = new Dictionary<string, ObservableCollection<InfoFile>>();
 
         //установка пути по умолчанию
         public ExplolerVM() => Path = DefaultPath;
@@ -106,12 +107,11 @@ namespace ExplolerClassificatorWPF.ViewModels
             if (!PathFiles.ContainsKey(path))
                 try
                 {
-                    PathFiles.Add(path, WorkFile.GetFolder(path).AsParallel().AsOrdered()
-                                                .Select(s => new FileConverter().Convert(s) as InfoFile));
+                    PathFiles.Add(path, new ObservableCollection<InfoFile>(WorkFile.GetFolder(path).AsParallel().AsOrdered()
+                                                .Select(s => new FileConverter().Convert(s) as InfoFile)));
                 }
                 catch
                 {
-
                     MainWindow.StatusBar.Dispatcher?.Invoke(()
                         => StatusBarLastElemAddPF = MainWindow.StatusBar.RemoveAdd(StatusBarLastElemAddPF, $"Нет доступа {path}"));
                     return false;
@@ -120,7 +120,7 @@ namespace ExplolerClassificatorWPF.ViewModels
         }
 
         //команда для изменения пути
-        public ICommand ChangePath => new DelegateCommand((o) =>
+        public ICommand ChangePath => new DelegateCommand(o =>
         {
             if (o is TreeFolderItem tree)
             {
@@ -131,38 +131,37 @@ namespace ExplolerClassificatorWPF.ViewModels
             else if (o is string path) Path = path;
         });
         //команда возврата на предыдущий путь в истории путей
-        public ICommand Left => new DelegateCommand((o) =>
+        public ICommand Left => new DelegateCommand(o =>
         {
             _Path = HistrotyPaths[--CurrentPathId];
             OnPropertyChanged(nameof(Path));
             OnPropertyChanged(nameof(CurrentPath));
-        }, (o) => HistrotyPaths.Any() && CurrentPathId - 1 > 0);
+        }, o => HistrotyPaths.Any() && CurrentPathId - 1 > 0);
         //команда перехода на следующий путь в истории путей
-        public ICommand Right => new DelegateCommand((o) =>
+        public ICommand Right => new DelegateCommand(o =>
         {
             _Path = HistrotyPaths[++CurrentPathId];
             OnPropertyChanged(nameof(Path));
             OnPropertyChanged(nameof(CurrentPath));
-        }, (o) => HistrotyPaths.Any() && CurrentPathId < HistrotyPaths.Count - 1);
+        }, o => HistrotyPaths.Any() && CurrentPathId < HistrotyPaths.Count - 1);
         //команда перезагрузки
-        public ICommand Refresh => new DelegateCommand((o) => OnPropertyChanged(nameof(CurrentPath)),
-                                                       (o) => HistrotyPaths.Any());
+        public ICommand Refresh => new DelegateCommand(o => OnPropertyChanged(nameof(CurrentPath)),
+                                                       o => HistrotyPaths.Any());
 
         //команда поиска по файлам и директориям
-        public ICommand Search => new DelegateCommand((o) =>
+        public ICommand Search => new DelegateCommand(o =>
         {
             if (o is string searchP) SearchPattern = searchP;
             var _SearchPattern = SearchPattern?.Replace(@"\", @"\\");
-            _SearchPath = PathFiles[HistrotyPaths[CurrentPathId]].AsParallel().AsOrdered()
+            _SearchPath = new ObservableCollection<InfoFile>(PathFiles[HistrotyPaths[CurrentPathId]].AsParallel().AsOrdered()
                           .Where(p => Regex.IsMatch(p?.Name, _SearchPattern) ||
-                                      (p.Classes != null && p.Classes.Where(c => Regex.IsMatch(c?.Label, _SearchPattern)).Count() != 0))
-                          .ToList();
+                                      (p.Classes != null && p.Classes.Where(c => Regex.IsMatch(c?.Label, _SearchPattern)).Any())));
             if (_SearchPath != null)
             {
                 ExplolerMode = ExplolerMode.Search;
                 OnPropertyChanged(nameof(CurrentPath));
             }
             else ExplolerMode = ExplolerMode.Display;
-        }, (o) => HistrotyPaths.Any() && PathFiles.ContainsKey(HistrotyPaths[CurrentPathId]));
+        }, o => HistrotyPaths.Any() && PathFiles.ContainsKey(HistrotyPaths[CurrentPathId]));
     }
 }

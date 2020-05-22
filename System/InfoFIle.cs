@@ -1,5 +1,4 @@
-﻿using ExplolerClassificatorWPF.Display;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -62,7 +61,7 @@ namespace ExplolerClassificatorWPF
                 return _ImageExtension;
             }
         }
-        public ElemExplolerState ElemExplolerState { get => _ElemExplolerState; set { _ElemExplolerState = value; OnPropertyChanged(nameof(ElemExplolerState)); } }
+        public ElemExplolerState ElemExplolerState { get => _ElemExplolerState; set { _ElemExplolerState = value; OnPropertyChanged(); } }
         public TypeInfo Type { get; set; } = TypeInfo.Any;
         public string FullName { get; set; }
         public string Name { get; set; }
@@ -70,25 +69,27 @@ namespace ExplolerClassificatorWPF
         public string Extension { get; set; }
         public long Length { get; set; } = -1;
 
+        Thread Thread;
         //классы файла, используется только типом File
         public IEnumerable<Classif> Classes
         {
             get
             {
-                if (_Classes == null && Type == TypeInfo.File)
+                if (_Classes != null) return _Classes;
+                if (Thread == null && Type == TypeInfo.File)
                 {
-                    new Thread(() =>
+                    Thread = new Thread(() =>
                     {
                         ElemExplolerState = ElemExplolerState.Classification;
                         Classes = Classification.GetClasses(FullName);
                         ElemExplolerState = ElemExplolerState.None;
                     })
-                    { IsBackground = true }.Start();
-                    return new List<Classif>();
+                    { IsBackground = true };
+                    Thread.Start();
                 }
-                return _Classes;
+                return null;
             }
-            set { _Classes = value; OnPropertyChanged(nameof(Classes)); }
+            set { _Classes = value; OnPropertyChanged(); }
         }
     }
 }
