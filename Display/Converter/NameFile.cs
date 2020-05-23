@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Windows.Data;
 
 namespace ExplolerClassificatorWPF.Display.Converter
@@ -11,15 +12,16 @@ namespace ExplolerClassificatorWPF.Display.Converter
         {
             if (value is InfoFile infoFile && infoFile.Name != null)
                 if (parameter is string num && int.TryParse(num, out var number))
-                {
-                    if (infoFile.Name.Length < number) return infoFile.Name;
-                    if (infoFile.Type == TypeInfo.File && infoFile.Extension != null)
+                    if (infoFile.Name != null)
                     {
-                        var header = infoFile.Name.Substring(0, number - infoFile.Extension.Length);
-                        return header += $"..{infoFile.Extension}";
+                        if (infoFile.Name[0] == '.' || infoFile.Name.Length < number) return infoFile.Name;
+                        if (infoFile.Type == TypeInfo.File && infoFile.Extension != null)
+                        {
+                            var header = infoFile.Name.Substring(0, number - infoFile.Extension.Length);
+                            return header += $"..{infoFile.Extension}";
+                        }
+                        return $"{infoFile.Name.Substring(0, number)}..";
                     }
-                    return $"{infoFile.Name.Substring(0, number)}..";
-                }
             return null;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

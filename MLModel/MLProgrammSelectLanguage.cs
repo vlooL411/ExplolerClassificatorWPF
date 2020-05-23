@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace ExplolerClassificatorWPF.MLModel
 {
-    class MLProgrammSelectLanguage
+    public class MLProgrammSelectLanguage
     {
         //возможные классы, много-классового классификатора
         static public string[] labels

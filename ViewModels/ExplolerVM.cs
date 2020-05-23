@@ -153,9 +153,14 @@ namespace ExplolerClassificatorWPF.ViewModels
         {
             if (o is string searchP) SearchPattern = searchP;
             var _SearchPattern = SearchPattern?.Replace(@"\", @"\\");
-            _SearchPath = new ObservableCollection<InfoFile>(PathFiles[HistrotyPaths[CurrentPathId]].AsParallel().AsOrdered()
-                          .Where(p => Regex.IsMatch(p?.Name, _SearchPattern) ||
-                                      (p.Classes != null && p.Classes.Where(c => Regex.IsMatch(c?.Label, _SearchPattern)).Any())));
+            try
+            {
+                _SearchPath = new ObservableCollection<InfoFile>(PathFiles[HistrotyPaths[CurrentPathId]].AsParallel().AsOrdered()
+                              .Where(p => Regex.IsMatch(p?.Name, _SearchPattern) ||
+                                          (p.Classes != null && p.Classes.Where(c => Regex.IsMatch(c?.Label, _SearchPattern)).Any())));
+            }
+            catch { }
+
             if (_SearchPath != null)
             {
                 ExplolerMode = ExplolerMode.Search;
