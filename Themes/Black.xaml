@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ExplolerClassificatorWPF.Themes">
+	<SolidColorBrush x:Key="Back" Color="#FF191919"/>
+	<SolidColorBrush x:Key="Block" Color="#FF202020"/>
+	<SolidColorBrush x:Key="Path" Color="#FF0F0D0D"/>
+	<SolidColorBrush x:Key="Tools" Color="#FF212020"/>
+</ResourceDictionary>

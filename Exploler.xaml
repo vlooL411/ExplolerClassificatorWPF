@@ -7,7 +7,7 @@
 	  xmlns:local="clr-namespace:ExplolerClassificatorWPF" 
 	  xmlns:vm="clr-namespace:ExplolerClassificatorWPF.ViewModels" 
 	  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-	  mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800" Background="#FF191919"
+	  mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource Back}"
 	  DataContext="{Binding ExplolerVM, Source={StaticResource VMLocator}}">
 	<!--ресурсы страницы-->
 	<Page.Resources>
@@ -32,7 +32,7 @@
 	</Page.InputBindings>
 	<Grid>
 		<DockPanel>
-			<DockPanel LastChildFill="False" Height="22" DockPanel.Dock="Top" Background="#FF212020">
+			<DockPanel LastChildFill="False" Height="22" DockPanel.Dock="Top" Background="{DynamicResource Tools}">
 				<!--Кнопка возврата назад-->
 				<Button Command="{Binding Left}" Background="{x:Null}" BorderBrush="{x:Null}">
 					<Button.Content>
@@ -79,7 +79,7 @@
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
 			</TreeView>
-			<Grid MaxHeight="20" DockPanel.Dock="Top" Background="#FF0F0D0D">
+			<Grid MaxHeight="20" DockPanel.Dock="Top" Background="{DynamicResource Path}">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
 					<ColumnDefinition Width="140"/>

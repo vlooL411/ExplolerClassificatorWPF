@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 namespace ExplolerClassificatorWPF.Display
 {
-    public partial class TreeFolderItem : TreeViewItem, IContainerExploler
+    public partial class TreeFolderItem : TreeViewItem
     {
         public TreeFolderItem() => InitializeComponent();
         void TreeFolderItem_Expanded(object o, RoutedEventArgs e)

@@ -27,7 +27,7 @@ namespace ExplolerClassificatorWPF.MLModel
             catch { }
         }
         //принимает путь к изображению, для передачи в предикат
-        static public ImagePrediction Result(string imagePath) 
+        static public ImagePrediction Result(string imagePath)
             => predEngine?.Predict(new ImageData { ImagePath = imagePath });
         //получает классы изображения, на основе предиката
         static public IEnumerable<YoloBoundingBox> Parser(ImagePrediction imagePrediction)

@@ -10,9 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Class\**" />
     <Compile Remove="ExplolerClassificatorWPF.Test\**" />
+    <EmbeddedResource Remove="Class\**" />
     <EmbeddedResource Remove="ExplolerClassificatorWPF.Test\**" />
+    <None Remove="Class\**" />
     <None Remove="ExplolerClassificatorWPF.Test\**" />
+    <Page Remove="Class\**" />
     <Page Remove="ExplolerClassificatorWPF.Test\**" />
   </ItemGroup>
 
@@ -73,6 +77,10 @@
     <Page Update="Display\Block.xaml">
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Screens\" />
   </ItemGroup>
 
 </Project>

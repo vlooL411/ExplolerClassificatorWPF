@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Windows;
-using System.Windows.Input;
 
 namespace ExplolerClassificatorWPF.Display
 {
-    public partial class Detail : IContainerExploler
+    public partial class Detail
     {
         public Detail()
         {
