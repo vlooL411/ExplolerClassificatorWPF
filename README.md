@@ -1,3 +1,5 @@
 # ExplolerClassificatorWPF
 Диплом <br>
-<img src="https://github.com/vlooL411/ExplolerClassificatorWPF/tree/master/Screens/Main.jpg" width="150">
+<img src="Screens/Main.jpg" width="250"><br>
+<img src="Screens/TestImage.jpg" width="250"><br>
+<img src="Screens/TestText.jpg" width="250">
